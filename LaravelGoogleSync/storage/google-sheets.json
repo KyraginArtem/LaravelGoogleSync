@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "canvas-diagram-451116-u6",
+    "private_key_id": "3042691f19e87ea5f7836a091914c4cb9d030b4a",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQD0TgyKmH4WgDTw\neMtrGPU1ZZmt9oXIdYG37F2B5fQl/nHGrjUVxLVIgA1Licz7E+N5MxhvGHOMiFZI\nvmCO7cxlVsP5h3QgAuOCPz2Lfqm9uV+ZNvKJvzscS/MW3Po5YRuPOf+NyjUevjCl\nz9b4y5CV32sE6Yv0QmJATOqTT8dlGT3gdyJnTqhJFJ225yvK9lJ3mln6d/eMjufB\nLOKP4zfu3632BnF2mphWwNTuZBFd5IBm3nj9DoM4UaR1Q2xVQ/G2NkMmCt2HJgXG\nacW80UQvrw7yCsAAMWeBHPyA/kS4teT9MZ/g1NtIdU9/IYDhGfwTmek2g0Pa/DdQ\nMz3wb18VAgMBAAECggEAOgYtkV9tlw+FQ1YVTk8DslZ6vSgvlzBdil7/yIHizoFT\n6ZHnts9dFSagwb+taTbMkLUziPNgQlEBWU6qJVhScwE8E5B54r585ar6hZ6kVxTn\noT69NT0vn2Vki5oZbjZjss1eJoGPw0j9yewGzVmf8hC53NVRccawikAaeLl6jMaO\nrX6maZH0Z1O9wFM5IjzYAfn+l9VhP9u6assNFbK6MvGkFiVldILE6sHsN6JpH/Hd\nGJPu5Ospye+2sLqDyR2rdG2xAvv5MIvSh7g9Wv6zdYAPNVjU9WrUB3T6mPknGzFw\n99sGxZ/+ChVS/tALXY6grtzMQV/H7h6w7msrsMy74QKBgQD+PhDIepnH+IeOUUD3\n/OIXC79J0zAO7pTntLd62XeRlMV5BTiS8ECR97k1G3wuAZpucgN+oNotoyw/zDlC\nGQgnvOyj8/ojVtr+0P8BJu3HM07KYo0hT+Viyes8ziuEAlg9p/FT5R4MJlFK3/0j\nbdEnZeUPMyO6RDZG8+S7jOWE0QKBgQD1/mWYo+ZGLBYiHta0QxSp9kl1v0GkISFt\nK/RVgIcqrcCnhx5Q9kRsZb4d1ClwrBz9QEmQyJIArvecp2AOqQ2r5Cru9XWy0frM\nnRHOjnhjdzDhs4ydOqIPUakzJXwrDw2yGcWiwNB6xwEClpbSilnbeJ321UO0auh1\npGpNZfUXBQKBgQDMEg1undnpxPcpqNa5NuZTET7NhxJAKgijo07S8NMkq4GGDkbG\nyslJYMnscs9OLkNC+4kKjxoRH7RY0Rf0khsVqnNXdnIFA6Zselz1E8Yv6mMH1+ro\nHjVFAkYrXGFZaHhjpPX0HSftIKSHsRqC4ZbMROGDPc0jqbTXZtTmJcXkwQKBgQDm\n2SwCiJ0K8Uh8ELCwTdtQfL4Hb8pr+mNiDkOnEYzHMnN/Q7/hfppLl1dIqteQ0xQJ\nXZEr++14ErpwGmp8l40q6F6aDWO8wm04I5aYXv7/aNVImbS1wFZhReMhCmZyChhy\nMNlVmNiMv8Bk62jyf78/xPuIri5xW3p3HCpeI/ZS+QKBgQDr7lU+hkIOoYD23vrc\nQi+7bs8fo3DwnKL+Ou2oGGwWC3iinzAR95/Cc9JL7lGn5Gg7vI66cuMf5zZ6qcCu\nT6KpA6fxBzle//yDt+jndb/avaFQDzLT9rVr+roLtlYbmEfUaDsz8C+mdyysCeYl\nKacPkNkWc0+SFENmu8O/dw5ZkQ==\n-----END PRIVATE KEY-----\n",
+    "client_email": "laravelgooglesync@canvas-diagram-451116-u6.iam.gserviceaccount.com",
+    "client_id": "112625402018587433016",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/laravelgooglesync%40canvas-diagram-451116-u6.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+}
