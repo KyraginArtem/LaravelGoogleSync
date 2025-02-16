@@ -15,6 +15,9 @@ class CreateSyncRecordsTable extends Migration
     {
         Schema::create('sync_records', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->enum('status', ['Allowed', 'Prohibited'])->default('Allowed');
             $table->timestamps();
         });
     }

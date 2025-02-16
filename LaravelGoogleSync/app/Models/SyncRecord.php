@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SyncRecord extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'description', 'status'];
+
+    public function scopeAllowed($query)
+    {
+        return $query->where('status', 'Allowed');
+    }
+
 }
