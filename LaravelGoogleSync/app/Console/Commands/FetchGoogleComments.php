@@ -3,40 +3,44 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Services\GoogleSheetsService;
 
 class FetchGoogleComments extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'command:name';
+    protected $signature = 'fetch:comments {count?}';
+    protected $description = 'Загружает комментарии из Google Sheets и выводит их в консоль';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $googleSheetsService;
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(GoogleSheetsService $googleSheetsService)
     {
         parent::__construct();
+        $this->googleSheetsService = $googleSheetsService;
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
     public function handle()
     {
-        return 0;
+        $this->info('Загружаем комментарии из Google Sheets...');
+
+        $count = $this->argument('count') ?? 20;
+
+        $comments = $this->googleSheetsService->fetchComments($count);
+
+        if (empty($comments)) {
+            $this->warn('Комментарии не найдены.');
+            return;
+        }
+
+        $bar = $this->output->createProgressBar(count($comments));
+        $bar->start();
+
+        foreach ($comments as $comment) {
+            $this->line("ID: {$comment['id']} | Комментарий: {$comment['comment']}");
+            $bar->advance();
+        }
+
+        $bar->finish();
+        $this->info("\nГотово! Загружено " . count($comments) . " комментариев.");
     }
 }
+
