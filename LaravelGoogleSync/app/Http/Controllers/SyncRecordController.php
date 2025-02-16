@@ -60,4 +60,30 @@ class SyncRecordController extends Controller
         $syncRecord->delete();
         return redirect()->route('sync_records.index')->with('success', 'Запись удалена!');
     }
+
+    public function generate()
+    {
+        $statuses = ['Allowed', 'Prohibited'];
+
+        $data = [];
+        for ($i = 0; $i < 1000; $i++) {
+            $data[] = [
+                'name' => 'Запись ' . ($i + 1),
+                'description' => 'Описание записи ' . ($i + 1),
+                'status' => $statuses[array_rand($statuses)],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        }
+
+        DB::table('sync_records')->insert($data);
+
+        return redirect()->route('sync_records.index')->with('success', '1000 записей добавлено!');
+    }
+
+    public function clear()
+    {
+        SyncRecord::truncate();
+        return redirect()->route('sync_records.index')->with('success', 'Таблица очищена!');
+    }
 }

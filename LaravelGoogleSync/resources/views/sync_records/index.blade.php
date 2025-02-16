@@ -1,12 +1,11 @@
-<?php
-
-
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
         <h2>Список записей</h2>
         <a href="{{ route('sync_records.create') }}" class="btn btn-primary">Добавить запись</a>
+        <a href="{{ route('sync_records.generate') }}" class="btn btn-success">Генерировать 1000 записей</a>
+        <a href="{{ route('sync_records.clear') }}" class="btn btn-danger">Очистить таблицу</a>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -41,3 +40,4 @@
         </table>
     </div>
 @endsection
+
