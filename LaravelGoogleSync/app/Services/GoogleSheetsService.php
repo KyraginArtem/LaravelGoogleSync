@@ -17,7 +17,14 @@ class GoogleSheetsService
         $this->spreadsheetId = env('GOOGLE_SHEETS_SPREADSHEET_ID');
 
         $this->client = new Google_Client();
-        $this->client->setAuthConfig(storage_path('google-sheets.json'));
+        $googleCredentialsPath = storage_path('google-sheets.json');
+
+        if (!file_exists($googleCredentialsPath)) {
+            throw new \Exception("Файл учетных данных не найден: " . $googleCredentialsPath);
+        }
+
+        $this->client->setAuthConfig($googleCredentialsPath);
+
         $this->client->addScope(Google_Service_Sheets::SPREADSHEETS);
 
         $this->service = new Google_Service_Sheets($this->client);
