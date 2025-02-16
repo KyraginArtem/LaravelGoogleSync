@@ -97,7 +97,7 @@ class GoogleSheetsService
         $this->service->spreadsheets_values->append($spreadsheetId, $range, $body, $params);
     }
 
-    public function fetchComments($count = 20): array
+    public function fetchComments($count = 20)
     {
         $spreadsheetId = env('GOOGLE_SHEETS_SPREADSHEET_ID');
         $range = 'Sheet1!A1:Z1000'; // Загружаем все данные
@@ -105,16 +105,19 @@ class GoogleSheetsService
         $response = $this->service->spreadsheets_values->get($spreadsheetId, $range);
         $values = $response->getValues();
 
-        if (!$values) {
+        if (!$values || count($values) <= 1) {
             return [];
         }
 
         $comments = [];
-        foreach ($values as $row) {
-            if (isset($row[0]) && isset($row[count($row) - 1])) {
+        foreach (array_slice($values, 1) as $row) {
+            if (isset($row[0])) {
+                $lastColumnIndex = count($row) - 1;
+                $comment = isset($row[$lastColumnIndex]) ? $row[$lastColumnIndex] : '';
+
                 $comments[] = [
-                    'id' => $row[0], // Первый столбец — ID записи
-                    'comment' => $row[count($row) - 1] // Последний столбец — Комментарий
+                    'id' => $row[0],
+                    'comment' => $comment
                 ];
             }
 

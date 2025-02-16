@@ -63,22 +63,16 @@ class SyncRecordController extends Controller
 
     public function generate()
     {
-        $statuses = ['Allowed', 'Prohibited'];
-
-        $data = [];
+        // Создаем 1000 случайных записей
         for ($i = 0; $i < 1000; $i++) {
-            $data[] = [
+            SyncRecord::create([
                 'name' => 'Запись ' . ($i + 1),
                 'description' => 'Описание записи ' . ($i + 1),
-                'status' => $statuses[array_rand($statuses)],
-                'created_at' => now(),
-                'updated_at' => now(),
-            ];
+                'status' => ['Allowed', 'Prohibited'][rand(0, 1)], // Рандомный статус
+            ]);
         }
 
-        DB::table('sync_records')->insert($data);
-
-        return redirect()->route('sync_records.index')->with('success', '1000 записей добавлено!');
+        return redirect()->route('sync_records.index')->with('success', '1000 записей успешно созданы.');
     }
 
     public function clear()

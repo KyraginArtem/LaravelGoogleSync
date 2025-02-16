@@ -4,8 +4,14 @@
     <div class="container">
         <h2>Список записей</h2>
         <a href="{{ route('sync_records.create') }}" class="btn btn-primary">Добавить запись</a>
-        <a href="{{ route('sync_records.generate') }}" class="btn btn-success">Генерировать 1000 записей</a>
-        <a href="{{ route('sync_records.clear') }}" class="btn btn-danger">Очистить таблицу</a>
+        <form action="{{ route('sync_records.generate') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-success">Создать 1000 записей</button>
+        </form>
+        <form action="{{ route('sync_records.clear') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">Очистить</button>
+        </form>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
