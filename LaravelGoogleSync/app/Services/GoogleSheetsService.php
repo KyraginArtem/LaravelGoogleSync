@@ -49,4 +49,52 @@ class GoogleSheetsService
             $params
         );
     }
+
+    public function deleteRecord($recordId)
+    {
+        $spreadsheetId = env('GOOGLE_SHEETS_SPREADSHEET_ID');
+        $range = 'Sheet1!A1:Z1000';
+
+        // Загружаем текущие данные из Google Sheets
+        $response = $this->service->spreadsheets_values->get($spreadsheetId, $range);
+        $values = $response->getValues();
+
+        if (!$values) {
+            return;
+        }
+
+        // Поиск строки с нужным ID
+        $rowIndex = null;
+        foreach ($values as $index => $row) {
+            if (isset($row[0]) && $row[0] == $recordId) {
+                $rowIndex = $index + 1;
+                break;
+            }
+        }
+
+        if ($rowIndex) {
+            $deleteRange = "Sheet1!A$rowIndex:Z$rowIndex";
+            $clearRequest = new \Google_Service_Sheets_ClearValuesRequest();
+            $this->service->spreadsheets_values->clear($spreadsheetId, $deleteRange, $clearRequest);
+        }
+    }
+
+    public function syncRecord(\App\Models\SyncRecord $record)
+    {
+        $spreadsheetId = env('GOOGLE_SHEETS_SPREADSHEET_ID');
+        $range = 'Sheet1!A1';
+
+        $data = [
+            [$record->id, $record->name, $record->description, $record->status]
+        ];
+
+        $body = new \Google_Service_Sheets_ValueRange([
+            'values' => $data
+        ]);
+
+        $params = ['valueInputOption' => 'RAW'];
+
+        $this->service->spreadsheets_values->append($spreadsheetId, $range, $body, $params);
+    }
+
 }
